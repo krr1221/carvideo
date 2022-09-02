@@ -63,11 +63,11 @@
         <div class="left div_any01">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../assets/img/title_1.png">车辆类型统计 </div>
-                <pieChart></pieChart>
+                <pieChart style="margin-top:20px;"></pieChart>
             </div>
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../assets/img/title_2.png">车辆状态统计 </div>
-                <pie-chart></pie-chart>
+                <barChart style="margin-top:20px;"></barChart>
             </div>
         </div>
         <div class="div_any02 left ">
@@ -184,6 +184,7 @@
 
 <script>
 import pieChart from './pieChart.vue'
+import barChart from './barChart.vue'
 export default {
   data () {
     return {
@@ -191,7 +192,8 @@ export default {
     }
   },
   components: {
-    pieChart
+    pieChart,
+    barChart
   }
 }
 </script>

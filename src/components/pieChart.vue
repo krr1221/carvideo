@@ -1,5 +1,5 @@
 <template>
-    <div ref="char1" style="width:370px;height:370px;">
+    <div ref="char1" style="width:340px;height:260px;">
       <p>this is piecharts</p>
     </div>
 </template>
@@ -51,7 +51,8 @@ export default {
           {
             name: '车类型',
             type: 'pie',
-            radius: ['40%', '70%'],
+            // radius是用来设置饼图大小的
+            radius: ['40%', '60%'],
             itemStyle: {
               normal: {
                 label: {

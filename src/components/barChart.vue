@@ -1,11 +1,9 @@
 <template>
     <div ref="char2" style="width:340px;height:260px;">
-      <!-- <p>this is barcharts</p> -->
     </div>
 </template>
 
 <script>
-// import $ from 'jQuery'
 import * as echarts from 'echarts'
 export default {
   name: 'barChart',
@@ -22,12 +20,10 @@ export default {
     })
   },
   created () {
-    // this.char1()
   },
   methods: {
     // 统计分析图
     char2 () {
-      // var myChart = echarts.init($('#char1')[0])
       var myChart = echarts.init(this.$refs.char2)
       console.log(myChart)
 
@@ -38,7 +34,11 @@ export default {
             type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
-        grid: {show: 'true', borderWidth: '0'},
+        grid: {
+          left: '24%', // 控制左右边距
+          show: 'true',
+          borderWidth: '0'
+        },
         legend: {
           data: ['行驶', '停车', '熄火', '离线'],
           textStyle: {

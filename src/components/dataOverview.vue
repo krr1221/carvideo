@@ -73,17 +73,17 @@
         <div class="div_any02 left ">
             <div class="div_any_child div_height">
                 <div class="div_any_title any_title_width"><img src="../assets/img/title_3.png">车辆行驶地图 </div>
-                <div id="map_div"></div>
+                <mapSmall></mapSmall>
             </div>
         </div>
         <div class="right div_any01">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../assets/img/title_4.png">车辆行驶统计 </div>
-                <p id="char3" class="p_chart"></p>
+                <lineChart style="margin-top:20px;"></lineChart>
             </div>
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../assets/img/title_5.png">车辆报警统计 </div>
-                <p id="char4" class="p_chart"></p>
+                <barChartCol style="margin-top:20px;"></barChartCol>
             </div>
         </div>
     </div>
@@ -185,6 +185,9 @@
 <script>
 import pieChart from './pieChart.vue'
 import barChart from './barChart.vue'
+import lineChart from './lineChart.vue'
+import barChartCol from './barChartCol.vue'
+import mapSmall from './mapSmall.vue'
 export default {
   data () {
     return {
@@ -193,7 +196,10 @@ export default {
   },
   components: {
     pieChart,
-    barChart
+    barChart,
+    lineChart,
+    barChartCol,
+    mapSmall
   }
 }
 </script>

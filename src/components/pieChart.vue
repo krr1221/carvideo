@@ -1,11 +1,9 @@
 <template>
     <div ref="char1" style="width:340px;height:260px;">
-      <p>this is piecharts</p>
     </div>
 </template>
 
 <script>
-// import $ from 'jQuery'
 import * as echarts from 'echarts'
 export default {
   name: 'pieChart',
@@ -22,12 +20,10 @@ export default {
     })
   },
   created () {
-    // this.char1()
   },
   methods: {
     // 统计分析图
     char1 () {
-      // var myChart = echarts.init($('#char1')[0])
       var myChart = echarts.init(this.$refs.char1)
       console.log(myChart)
 

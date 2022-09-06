@@ -14,9 +14,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "echarts": "^5.1.2",
+    "echarts": "^5.3.3",
     "jquery": "^3.6.0",
     "vue": "^2.5.2",
+    "vue-baidu-map": "^0.21.22",
     "vue-echarts": "^6.2.3",
     "vue-router": "^3.0.1"
   },

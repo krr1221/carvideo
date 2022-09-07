@@ -10,7 +10,7 @@ import * as echarts from 'echarts'
 import './assets/css/base.css'
 import './assets/css/tail.css'
 import './assets/css/zTreeStyle/zTreeStyle.css'
-import BMap from 'vue-baidu-map'
+import BaiduMap from 'vue-baidu-map'
 
 Vue.config.productionTip = false
 
@@ -25,7 +25,7 @@ new Vue({
 Vue.prototype.$ = $
 Vue.prototype.$echarts = echarts
 
-Vue.use(BMap, {
+Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'O8hWGruur8Govaye6KCyDGitnk7KMszQ'
 })

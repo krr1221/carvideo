@@ -39,9 +39,10 @@ export default {
     this.$nextTick(function () {
       var _this = this
       MP(_this.ak).then(BMap => {
-        var map = new BMap.Map('map', {enableMapClick: true})
-        console.log(map)
+        var map = new BMap.Map('map')
+        this.init({BMap, map})
       })
+      // this.init()
     })
   },
   created () {
@@ -49,18 +50,49 @@ export default {
   methods: {
 
     init ({BMap, map}) {
-      this.map = map
+      console.log('开始加载地图。。。。')
+      // map = new BMap.Map('map')
       var point = new BMap.Point(116.404, 39.915)
       map.centerAndZoom(point, 17)
-      this.setMarker()
-      map.enableScrollWheelZoom()
-    },
+      // var size1 = new BMap.Size(10, 50)
+      // map.addControl(new BMap.MapTypeControl({
+      //   offset: size1,
+      //   mapTypes: [
+      //     BMAP_NORMAL_MAP,
+      //     BMAP_HYBRID_MAP
+      //   ]}
+      // ))
+      // 编写自定义函数,创建标注
+      function addMarker (point) {
+        var marker = new BMap.Marker(point)
+        map.addOverlay(marker)
+      }
 
-    handler ({BMap, map}) {
-      console.log(BMap, map)
-      this.center.lng = 116.404
-      this.center.lat = 39.915
-      this.zoom = 17
+      // 随机向地图添加25个标注
+      var bounds = map.getBounds()
+      var sw = bounds.getSouthWest()
+      var ne = bounds.getNorthEast()
+      var lngSpan = Math.abs(sw.lng - ne.lng)
+      var latSpan = Math.abs(ne.lat - sw.lat)
+      for (var i = 0; i < 25; i++) {
+        var point1 = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7))
+        addMarker(point1)
+      }
+
+      map.setCurrentCity('北京') // 设置地图显示的城市 此项是必须设置的
+      map.enableScrollWheelZoom(true) // 开启鼠标滚轮缩放
+      // 设备地图颜色
+      // var mapStyle = {
+      //   style: 'midnight'
+      // }
+      // map.setMapStyle(mapStyle)
+
+      // 加载城市控件
+      var size = new BMap.Size(10, 50)
+      map.addControl(new BMap.CityListControl({
+        // anchor: BMAP_ANCHOR_TOP_LEFT,
+        offset: size
+      }))
     }
 
     // // 获取div的高度
@@ -97,7 +129,7 @@ export default {
     //   for (var i = 0; i < 25; i++) {
     //     var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7))
     //     addMarker(point)
-    //   };
+    //   }
 
     //   map.setCurrentCity('北京') // 设置地图显示的城市 此项是必须设置的
     //   map.enableScrollWheelZoom(true) // 开启鼠标滚轮缩放

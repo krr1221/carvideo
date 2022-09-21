@@ -1,11 +1,6 @@
 <template>
-    <!-- <baidu-map
-      :center="center"
-      :zoom="zoom"
-      style="height:566px"
-      ></baidu-map> -->
-
-      <div id="map" style="height:566px"></div>
+      <!-- 小地图的高度由父组件传入确定  -->
+      <div id="map" :style="{height:height}"></div>
 </template>
 
 <script>
@@ -15,8 +10,12 @@
 import {MP} from './map'
 export default {
   name: 'mapSmall',
+  props: [
+    'boxheight'
+  ],
   data () {
     return {
+      height: this.boxheight,
       ak: 'O8hWGruur8Govaye6KCyDGitnk7KMszQ',
       center: {
         lng: 116.404,
@@ -51,6 +50,7 @@ export default {
 
     init ({BMap, map}) {
       console.log('开始加载地图。。。。')
+      console.log(this.height)
       // map = new BMap.Map('map')
       var point = new BMap.Point(116.404, 39.915)
       map.centerAndZoom(point, 17)

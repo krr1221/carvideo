@@ -1,8 +1,8 @@
 <template>
-    <div class="map_con left" id="car_control">
+    <div class="map_con left" id="car_control" ref="mapPage">
     <!--左侧地图-->
   <div class="left map_left"  >
-      <div  class="map_box" id="map_box"></div>
+      <mapSmall boxheight="640px"></mapSmall>
       <div class="map_top">
           <ul>
               <li class="active"><i class="glyphicon glyphicon-pencil"></i><a href="javascript:void (0)" class="active">图层选择</a> </li>
@@ -135,3 +135,39 @@
 
 </div>
 </template>
+
+<script>
+import mapSmall from './mapSmall.vue'
+export default {
+  data () {
+    return {
+      clientHeight: ''
+    }
+  },
+  components: {
+    mapSmall
+  },
+  created () {
+
+  },
+  mounted () {
+    this.clientHeight = `${document.documentElement.clientHeight}`
+    window.onresize = function temp () {
+      this.clientHeight = `${document.documentElement.clientHeight}`
+    }
+  },
+  watch: {
+    // 如果 `clientHeight` 发生改变，这个函数就会运行
+    clientHeight: function () {
+      this.changeFixed(this.clientHeight)
+    }
+  },
+  methods: {
+    changeFixed (clientHeight) { // 动态修改样式
+      // console.log(clientHeight)
+      this.$refs.mapPage.style.height = parseInt(clientHeight) - 82 + 'px'
+      // console.log(this.$refs.homePage.style.height, ' this.$refs.carMonitor.style.height')
+    }
+  }
+}
+</script>

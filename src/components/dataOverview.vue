@@ -73,7 +73,7 @@
         <div class="div_any02 left ">
             <div class="div_any_child div_height">
                 <div class="div_any_title any_title_width"><img src="../assets/img/title_3.png">车辆行驶地图 </div>
-                <mapSmall style="margin-top:20px;"></mapSmall>
+                <mapSmall style="margin-top:20px;" boxheight="566px"></mapSmall>
             </div>
         </div>
         <div class="right div_any01">

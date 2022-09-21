@@ -1,5 +1,5 @@
 <template>
-    <div class="con1 left" id="car_control">
+    <div class="con1 left" id="car_control" ref="carMonitor">
         <div class="left car_left">
             <div class="left_up bow_shadow">
                 <p>
@@ -31,21 +31,44 @@
         </div>
 
         <div class="right car_right">
-            <mapSmall></mapSmall>
+            <mapSmall boxheight="640px"></mapSmall>
         </div>
     </div>
 </template>
 
 <script>
+// import func from 'vue-editor-bridge'
 import mapSmall from './mapSmall.vue'
 export default {
   data () {
     return {
-
+      clientHeight: ''
     }
   },
   components: {
     mapSmall
+  },
+  created () {
+
+  },
+  mounted () {
+    this.clientHeight = `${document.documentElement.clientHeight}`
+    window.onresize = function temp () {
+      this.clientHeight = `${document.documentElement.clientHeight}`
+    }
+  },
+  watch: {
+    // 如果 `clientHeight` 发生改变，这个函数就会运行
+    clientHeight: function () {
+      this.changeFixed(this.clientHeight)
+    }
+  },
+  methods: {
+    changeFixed (clientHeight) { // 动态修改样式
+      // console.log(clientHeight)
+      this.$refs.carMonitor.style.height = parseInt(clientHeight) - 82 + 'px'
+      // console.log(this.$refs.homePage.style.height, ' this.$refs.carMonitor.style.height')
+    }
   }
 }
 </script>

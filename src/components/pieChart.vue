@@ -25,7 +25,7 @@ export default {
     // 统计分析图
     char1 () {
       var myChart = echarts.init(this.$refs.char1)
-      console.log(myChart)
+      // console.log(myChart)
 
       var option = {
         tooltip: {

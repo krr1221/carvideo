@@ -13,9 +13,10 @@
         <p class="color_font"><small>On Board Video Monitoring System</small></p>
     </div>
     <div class="right nav text_right">
-        <ul> <li @click="goto($event)"><i class="nav_7"></i><a href="static.html">查询统计</a> </li>
-            <li @click="goto($event)"><i class="nav_8"></i><a href="message.html">信息录入</a> </li>
-            <li @click="goto($event)"><i class="nav_4"></i><a href="table1.html">表格界面</a> </li>
+        <ul>
+          <li :class="index===3?'nav_active':''" @click="goto($event)"><i class="nav_7"></i><a>查询统计</a> </li>
+          <li :class="index===4?'nav_active':''" @click="goto($event)"><i class="nav_8"></i><a>信息录入</a> </li>
+          <li :class="index===5?'nav_active':''" @click="goto($event)"><i class="nav_4"></i><a>表格界面</a> </li>
         </ul>
     </div>
 </header>
@@ -42,6 +43,15 @@ export default {
         this.$router.push('/mapPage')
       } else if (title === '数据概览') {
         this.index = 0
+        this.$router.push('/dataOverview')
+      } else if (title === '查询统计') {
+        this.index = 3
+        this.$router.push('/statistics')
+      } else if (title === '信息录入') {
+        this.index = 4
+        this.$router.push('/dataOverview')
+      } else if (title === '表格界面') {
+        this.index = 5
         this.$router.push('/dataOverview')
       }
     }

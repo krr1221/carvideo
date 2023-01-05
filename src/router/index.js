@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import dataOverview from '@/components/dataOverview'
 import mapPage from '@/components/mapPage'
 import carMonitor from '@/components/carMonitor'
+import statistics from '@/components/statistics'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/carMonitor',
       name: 'carMonitor',
       component: carMonitor
+    },
+    {
+      path: '/statistics',
+      name: 'statistics',
+      component: statistics
     }
   ]
 })

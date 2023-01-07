@@ -49,10 +49,10 @@ export default {
         this.$router.push('/statistics')
       } else if (title === '信息录入') {
         this.index = 4
-        this.$router.push('/dataOverview')
+        this.$router.push('/inputInfos')
       } else if (title === '表格界面') {
         this.index = 5
-        this.$router.push('/dataOverview')
+        this.$router.push('/tables')
       }
     }
   }

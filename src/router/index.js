@@ -5,6 +5,8 @@ import dataOverview from '@/components/dataOverview'
 import mapPage from '@/components/mapPage'
 import carMonitor from '@/components/carMonitor'
 import statistics from '@/components/statistics'
+import inputInfos from '@/components/inputInfos'
+import tables from '@/components/tables'
 
 Vue.use(Router)
 
@@ -34,6 +36,16 @@ export default new Router({
       path: '/statistics',
       name: 'statistics',
       component: statistics
+    },
+    {
+      path: '/inputInfos',
+      name: 'inputInfos',
+      component: inputInfos
+    },
+    {
+      path: '/tables',
+      name: 'tables',
+      component: tables
     }
   ]
 })

@@ -1,31 +1,35 @@
 <template>
-    <div ref="char4" style="width:340px;height:260px;">
-    </div>
+    <div ref="barchartcol"></div>
 </template>
 
 <script>
 import * as echarts from 'echarts'
 export default {
   name: 'barChartCol',
+  props: ['showData'],
   data () {
     return {
-
+      charts: ''
+    }
+  },
+  watch: {
+    showData () {
+      this.$nextTick(function () {
+        this.drawMap()
+      })
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.barchartcol()
-      })
-    })
   },
   created () {
+    this.$nextTick(function () {
+      this.drawMap()
+    })
   },
   methods: {
-    // 统计分析图
-    barchartcol () {
-      var myChart = echarts.init(this.$refs.char4)
-      var option = {
+    // 绘制图标的函数
+    drawMap  () {
+      let option = {
         grid: {
           left: '24%',
           show: 'true',
@@ -47,7 +51,7 @@ export default {
           {
             type: 'category',
             splitLine: {show: false},
-            data: ['客运车', '危险品车', '网约车', '学生校车'],
+            data: this.showData.data,
             axisLabel: {
               show: true,
               textStyle: {
@@ -83,13 +87,20 @@ export default {
                 }
               }
             },
-            data: [2900, 1200, 300, 200, 900, 300]
+            data: this.showData.values
           }
         ]
       }
-
-      myChart.setOption(option)
-      // window.addEventListener('resize', function () { myChart.resize() })
+      // this.charts = echarts.init(document.getElementById(id))
+      this.charts = echarts.init(this.$refs.barchartcol)
+      // 改变屏幕大小图表重新加载
+      // var resizeDiv = document.getElementById(id)
+      // var listener = () => {
+      //   this.charts.resize()
+      // }
+      // EleResize.on(resizeDiv, listener)
+      this.charts.clear()
+      this.charts.setOption(option)
     }
   }
 }

@@ -4,6 +4,7 @@
 </template>
 
 <script>
+// import func from 'vue-editor-bridge'
 // import * as echarts from 'echarts'
 // import $ from 'jQuery'
 // import BMap from 'BMap'
@@ -35,22 +36,29 @@ export default {
     // this.rightChange()
     // var map = new BMap.Map('fli', {enableMapClick: true})
     // console.log(map)
+
     this.$nextTick(function () {
       var _this = this
       MP(_this.ak).then(BMap => {
         var map = new BMap.Map('map')
         this.init({BMap, map})
       })
-      // this.init()
     })
   },
   created () {
+    // this.$nextTick(function () {
+    //   var _this = this
+    //   MP(_this.ak).then(BMap => {
+    //     var map = new BMap.Map('map')
+    //     this.init({BMap, map})
+    //   })
+    // })
   },
   methods: {
 
     init ({BMap, map}) {
       console.log('开始加载地图。。。。')
-      console.log(this.height)
+      // console.log(this.height)
       // map = new BMap.Map('map')
       var point = new BMap.Point(116.404, 39.915)
       map.centerAndZoom(point, 17)

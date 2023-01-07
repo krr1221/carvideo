@@ -1,32 +1,36 @@
 <template>
-    <div ref="char2" style="width:340px;height:260px;">
-    </div>
+    <div ref="barchart"></div>
 </template>
 
 <script>
 import * as echarts from 'echarts'
 export default {
   name: 'barChart',
+  props: ['showData'],
   data () {
     return {
-
+      charts: ''
+    }
+  },
+  watch: {
+    showData () {
+      this.$nextTick(function () {
+        this.drawMap()
+      })
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.char2()
-      })
-    })
   },
   created () {
+    this.$nextTick(function () {
+      this.drawMap()
+    })
   },
   methods: {
-    // 统计分析图
-    char2 () {
-      var myChart = echarts.init(this.$refs.char2)
 
-      var option = {
+    // 绘制图标的函数
+    drawMap  () {
+      let option = {
         tooltip: {
           trigger: 'axis',
           axisPointer: { // 坐标轴指示器，坐标轴触发有效
@@ -39,7 +43,7 @@ export default {
           borderWidth: '0'
         },
         legend: {
-          data: ['行驶', '停车', '熄火', '离线'],
+          data: this.showData.data1,
           textStyle: {
             color: '#ffffff'
 
@@ -69,7 +73,7 @@ export default {
         yAxis: [
           {
             type: 'category',
-            data: ['客运车', '危险品车', '网约车', '学生校车'],
+            data: this.showData.data2,
             axisLabel: {
               show: true,
               textStyle: {
@@ -86,7 +90,7 @@ export default {
         ],
         series: [
           {
-            name: '行驶',
+            name: this.showData.data1[0],
             type: 'bar',
             stack: '总量',
             itemStyle: {
@@ -97,10 +101,10 @@ export default {
                 }
               }
             },
-            data: [320, 302, 301, 334]
+            data: this.showData.values0
           },
           {
-            name: '停车',
+            name: this.showData.data1[1],
             type: 'bar',
             stack: '总量',
             itemStyle: {
@@ -111,10 +115,10 @@ export default {
                 }
               }
             },
-            data: [120, 132, 101, 134]
+            data: this.showData.values1
           },
           {
-            name: '熄火',
+            name: this.showData.data1[2],
             type: 'bar',
             stack: '总量',
             itemStyle: {
@@ -125,10 +129,10 @@ export default {
                 }
               }
             },
-            data: [220, 182, 191, 234]
+            data: this.showData.values2
           },
           {
-            name: '离线',
+            name: this.showData.data1[3],
             type: 'bar',
             stack: '总量',
             itemStyle: {
@@ -139,14 +143,20 @@ export default {
                 }
               }
             },
-            data: [150, 212, 201, 154]
+            data: this.showData.values3
           }
 
         ]
       }
-
-      myChart.setOption(option)
-      // window.addEventListener('resize', function () { myChart.resize() })
+      this.charts = echarts.init(this.$refs.barchart)
+      // 改变屏幕大小图表重新加载
+      // var resizeDiv = document.getElementById(id)
+      // var listener = () => {
+      //   this.charts.resize()
+      // }
+      // EleResize.on(resizeDiv, listener)
+      this.charts.clear()
+      this.charts.setOption(option)
     }
   }
 }

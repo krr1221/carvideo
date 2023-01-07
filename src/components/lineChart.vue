@@ -1,34 +1,38 @@
 <template>
-    <div ref="char3" style="width:340px;height:260px;">
-    </div>
+    <div ref="linechart"></div>
 </template>
 
 <script>
 import * as echarts from 'echarts'
 export default {
   name: 'lineChart',
+  props: ['showData'],
   data () {
     return {
-
+      charts: ''
+    }
+  },
+  watch: {
+    showData () {
+      this.$nextTick(function () {
+        this.drawMap()
+      })
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.linechart()
-      })
-    })
   },
   created () {
+    this.$nextTick(function () {
+      this.drawMap()
+    })
   },
   methods: {
-    // 统计分析图
-    linechart () {
-      var myChart = echarts.init(this.$refs.char3)
 
-      var option = {
+    // 绘制图标的函数
+    drawMap  () {
+      let option = {
         legend: {
-          data: ['车辆行驶数量'],
+          data: this.showData.title,
           textStyle: {
             color: '#ffffff'
 
@@ -80,7 +84,7 @@ export default {
               }
             },
             boundaryGap: false,
-            data: ['0', '10', '20', '30', '40', '50', '60', '70', '80']
+            data: this.showData.coord
           }
         ],
         series: [
@@ -95,13 +99,19 @@ export default {
                 }
               }
             },
-            data: [15, 0, 20, 45, 22.1, 25, 70, 55, 76]
+            data: this.showData.values
           }
         ]
       }
-
-      myChart.setOption(option)
-      // window.addEventListener('resize', function () { myChart.resize() })
+      this.charts = echarts.init(this.$refs.linechart)
+      // 改变屏幕大小图表重新加载
+      // var resizeDiv = document.getElementById(id)
+      // var listener = () => {
+      //   this.charts.resize()
+      // }
+      // EleResize.on(resizeDiv, listener)
+      this.charts.clear()
+      this.charts.setOption(option)
     }
   }
 }

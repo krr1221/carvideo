@@ -63,11 +63,11 @@
         <div class="left div_any01">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../assets/img/title_1.png">车辆类型统计 </div>
-                <pieChart style="margin-top:20px;"></pieChart>
+                <pieChart :showData="pieChartData" class="p_chart"></pieChart>
             </div>
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../assets/img/title_2.png">车辆状态统计 </div>
-                <barChart style="margin-top:20px;"></barChart>
+                <barChart :showData="barChartData" class="p_chart"></barChart>
             </div>
         </div>
         <div class="div_any02 left ">
@@ -79,11 +79,11 @@
         <div class="right div_any01">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../assets/img/title_4.png">车辆行驶统计 </div>
-                <lineChart style="margin-top:20px;"></lineChart>
+                <lineChart :showData="lineChartData" class="p_chart"></lineChart>
             </div>
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../assets/img/title_5.png">车辆报警统计 </div>
-                <barChartCol style="margin-top:20px;"></barChartCol>
+                <barChartCol :showData="barChartColData" class="p_chart"></barChartCol>
             </div>
         </div>
     </div>
@@ -191,7 +191,32 @@ import mapSmall from './mapSmall.vue'
 export default {
   data () {
     return {
-
+      pieChartData: {
+        values: ['客运车', '危险品车', '网约车', '学生校车'],
+        values1: [
+          {value: 335, name: '客运车'},
+          {value: 310, name: '危险品车'},
+          {value: 234, name: '网约车'},
+          {value: 135, name: '学生校车'}
+        ]
+      },
+      barChartData: {
+        data1: ['行驶', '停车', '熄火', '离线'],
+        data2: ['客运车', '危险品车', '网约车', '学生校车'],
+        values0: [320, 302, 301, 334],
+        values1: [120, 132, 101, 134],
+        values2: [220, 182, 191, 234],
+        values3: [150, 212, 201, 154]
+      },
+      barChartColData: {
+        data: ['客运车', '危险品车', '网约车', '学生校车'],
+        values: [2900, 1200, 300, 200, 900, 300]
+      },
+      lineChartData: {
+        title: ['车辆行驶数量'],
+        coord: ['0', '10', '20', '30', '40', '50', '60', '70', '80'],
+        values: [15, 0, 20, 45, 22.1, 25, 70, 55, 76]
+      }
     }
   },
   components: {
@@ -203,3 +228,10 @@ export default {
   }
 }
 </script>
+<style>
+.p_chart{
+    height: 250px;
+    padding: 5px 10px;
+    margin-top: 15px;
+}
+</style>

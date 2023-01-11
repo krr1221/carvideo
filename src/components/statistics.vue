@@ -159,11 +159,11 @@
 </template>
 
 <script>
-import pieChart from './pieChart.vue'
-import barChart from './barChart.vue'
-import lineChart from './lineChart.vue'
-import barChartCol from './barChartCol.vue'
-import mapSmall from './mapSmall.vue'
+import pieChart from './charts/pieChart.vue'
+import barChart from './charts/barChart.vue'
+import lineChart from './charts/lineChart.vue'
+import barChartCol from './charts/barChartCol.vue'
+import mapSmall from './charts/mapSmall.vue'
 export default {
   data () {
     return {

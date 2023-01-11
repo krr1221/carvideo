@@ -6,6 +6,7 @@
             <li :class="index===0?'nav_active':''" @click="goto($event)"><i class="nav_1"></i><a>数据概览</a> </li>
             <li :class="index===1?'nav_active':''" @click="goto($event)"><i class="nav_2"></i><a>车辆监控</a> </li>
             <li :class="index===2?'nav_active':''" @click="goto($event)"><i class="nav_3"></i><a>地图界面</a> </li>
+            <li :class="index===6?'nav_active':''" @click="goto($event)"><i class="nav_6"></i><a>上传视频</a> </li>
             </ul>
     </div>
     <div class="header_center left">
@@ -53,6 +54,9 @@ export default {
       } else if (title === '表格界面') {
         this.index = 5
         this.$router.push('/tables')
+      } else if (title === '上传视频') {
+        this.index = 6
+        this.$router.push('/uploadVideos')
       }
     }
   }

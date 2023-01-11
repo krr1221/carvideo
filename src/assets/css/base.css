@@ -173,6 +173,7 @@ a:hover{
     0px 10px 15px #034c6a inset;
 
     box-sizing: border-box;
+    cursor: pointer;
 }
 .con{
     width: 100%;

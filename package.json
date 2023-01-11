@@ -14,12 +14,16 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^1.2.2",
     "echarts": "^5.3.3",
+    "element-ui": "^2.15.12",
     "jquery": "^3.6.0",
+    "spark-md5": "^3.0.2",
     "vue": "^2.5.2",
     "vue-baidu-map": "^0.21.22",
     "vue-echarts": "^6.2.3",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-simple-uploader": "^0.7.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

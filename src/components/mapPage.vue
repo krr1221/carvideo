@@ -137,7 +137,7 @@
 </template>
 
 <script>
-import mapSmall from './mapSmall.vue'
+import mapSmall from './charts/mapSmall.vue'
 export default {
   data () {
     return {
